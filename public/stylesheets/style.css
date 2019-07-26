@@ -1,8 +1,259 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+@font-face {
+  font-family: 'Brooklyn';
+  src: url("../fonts/The Brooklyn.otf"); }
 
-a {
-  color: #00B7FF; }
+@font-face {
+  font-family: 'Brooklyn-Bold';
+  src: url("../fonts/The Brooklyn Bold.otf"); }
+
+@font-face {
+  font-family: 'BabyFox';
+  src: url("../fonts/BabyFox.otf"); }
+
+@font-face {
+  font-family: 'Happy';
+  src: url("../fonts/Happy-Camper-Regular.ttf"); }
+
+@font-face {
+  font-family: 'Happy';
+  src: url("../fonts/Happy-Camper-Regular.ttf"); }
+
+@font-face {
+  font-family: 'Albus';
+  src: url("../fonts/Albus.ttf"); }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none; }
+
+html, body {
+  height: 100%; }
+
+body {
+  min-height: 100%; }
+
+#map {
+  width: 100%;
+  height: 400px; }
+
+.gm-style-iw-d {
+  text-align: center;
+  padding: 5px; }
+
+#subscript-form {
+  position: fixed;
+  right: 7px;
+  top: 18%;
+  width: 20%;
+  height: 100%;
+  box-shadow: 0 4px 50px 0 #edefd3;
+  background-color: #ededed; }
+
+#subscript-form label {
+  font-family: 'Brooklyn';
+  font-size: 20px; }
+
+.page-section, header {
+  min-height: 80vh;
+  width: 80%; }
+
+#header-bg {
+  background: #ff9900;
+  height: 100vh;
+  width: 20%;
+  position: absolute;
+  top: 0;
+  z-index: -1; }
+
+header {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 10%; }
+
+#page-title {
+  text-transform: uppercase;
+  font-family: 'Happy';
+  font-size: 110px;
+  margin-top: 48px; }
+
+#header-h3 {
+  width: 30%;
+  font-family: 'Brooklyn';
+  font-size: 20px;
+  margin-top: 80px;
+  letter-spacing: 1px;
+  line-height: 1.2; }
+
+.albus-span {
+  padding: 2px;
+  font-family: 'Albus'; }
+
+.span-bg {
+  background-color: rgba(255, 153, 0, 0.4); }
+
+.steps-num {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff9900;
+  padding: 5px;
+  border-radius: 50%;
+  font-family: 'Albus';
+  font-size: 24px;
+  margin-bottom: 10px; }
+
+.steps-container {
+  margin-top: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px; }
+
+.steps-desc {
+  font-family: 'Brooklyn';
+  font-size: 20px; }
+
+#subscript-form h2 {
+  font-family: 'Albus';
+  text-align: center;
+  font-weight: 100;
+  font-size: 30px;
+  margin-bottom: 40px; }
+
+#spam-message {
+  font-family: 'Brooklyn';
+  font-size: 14px;
+  width: 60%;
+  text-align: center;
+  margin: 50px auto;
+  letter-spacing: .6px; }
+
+#form-content {
+  margin-top: 40px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+#header-figure {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30%; }
+
+#header-figure img {
+  width: 100%; }
+
+input {
+  font-family: 'Brooklyn';
+  font-size: 14px;
+  border: solid 1px #757575;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px; }
+
+#submit-btn {
+  width: 75%;
+  font-family: 'Albus';
+  background: #ff9900;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 18px;
+  border-radius: 30px;
+  margin: 0 auto 75px;
+  border: none;
+  cursor: pointer;
+  transition: .2s ease; }
+
+#submit-btn:hover {
+  background: #c4d804;
+  transition: .2s ease;
+  transform: scale(1.05); }
+
+.section-title {
+  font-family: 'BabyFox';
+  font-size: 130px;
+  font-weight: 100;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: columns;
+  justify-content: center; }
+
+.benefit-img {
+  width: 200px; }
+
+.benefit-desc {
+  font-family: 'BabyFox';
+  font-size: 50px;
+  line-height: .7;
+  width: 250px;
+  text-align: center; }
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+#benefits-container {
+  width: 70%;
+  margin-left: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70vh; }
+
+.map-sec {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-top: 50px;
+  padding: 0 150px; }
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.social-img {
+  width: 40px;
+  margin: 0 10px; }
+
+#gallery {
+  display: flex;
+  margin-top: 80px;
+  margin-left: 80px;
+  box-shadow: 0 4px 50px 0 #edefd3; }
+
+#gallery img {
+  object-fit: cover;
+  width: 320px;
+  height: 500px; }
+
+#map-cotainer {
+  width: 100%; }
+
+.map-text {
+  text-align: center;
+  font-family: 'Brooklyn';
+  font-size: 30px;
+  width: 400px;
+  margin-top: 50px;
+  margin-left: 600px; }
 
 /*# sourceMappingURL=style.css.map */
