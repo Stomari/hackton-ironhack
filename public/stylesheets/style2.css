@@ -1,0 +1,24 @@
+#qrcode {
+}
+
+#code {
+  font-size: 2em;
+}
+
+.promo-body {
+  margin-top: 50px;
+}
+
+.find-the-nearest {
+  margin: 0 auto;
+  width: 80%;
+  height: 150px;
+  font-family: BabyFox;
+  font-size: 7em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
