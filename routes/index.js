@@ -6,18 +6,18 @@ const User = require('../models/user');
 const UserStatistics = require('../models/userStatistics');
 
 
-// const transporter = nodemailer.createTransport(sparkPostTransport({
-//   'sparkPostApiKey': process.env.SPARKPOST_API_KEY
-// }));
+const transporter = nodemailer.createTransport(sparkPostTransport({
+  'sparkPostApiKey': process.env.SPARKPOST_API_KEY
+}));
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.mailtrap.io',
-  port: 2525,
-  auth: {
-    user: 'e86143af192ef8',
-    pass: '5c8ee907365d35',
-  },
-});
+// const transporter = nodemailer.createTransport({
+//   host: 'smtp.mailtrap.io',
+//   port: 2525,
+//   auth: {
+//     user: 'e86143af192ef8',
+//     pass: '5c8ee907365d35',
+//   },
+// });
 
 router.get('/', (req, res) => {
   UserStatistics.find()
@@ -64,12 +64,12 @@ router.post('/send-email', (req, res) => {
       newUser.save()
         .then(() => {
           transporter.sendMail({
-            from: '"Bravocado! 🥑" <bravocado@ironhackers.dev>',
+            from: `"Bravocado! 🥑" <bravocado@${process.env.USERNAME_EMAIL}>`,
             to: email,
             subject: 'Awesome Subject',
             text: 'Awesome Message',
-            // html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
-            html: `<b>${username} <a href="http://bravocado.ironhackers.tech/promo/${token}">Click on this link to confirm</a></b>`
+            html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
+            // html: `<b>${username} <a href="http://bravocado.ironhackers.tech/promo/${token}">Click on this link to confirm</a></b>`
           })
             .then(info => {
               UserStatistics.find()
