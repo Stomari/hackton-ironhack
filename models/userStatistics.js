@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  username: { type: String, require: true },
-  email: { type: String, require: true },
-  promoCode: { type: String, require: true },
-  validation: { type: Boolean, default: false },
+const userStatisticsSchema = new Schema({
+  access: { type: Number, default: 0 },
+  form: { type: Number, default: 0 },
+  redeem: { type: Number, default: 0 },
 }, {
   timestamps: true,
 });
 
-const User = mongoose.model('User', userSchema);
+const UserStatistics = mongoose.model('UserStatistics', userStatisticsSchema);
 
-module.exports = User;
+module.exports = UserStatistics;
