@@ -42,24 +42,22 @@ router.post('/send-email', (req, res) => {
         promoCode: token,
       });
 
-      newUser.save((err) => {
-        if (err) {
-          res.render('index', { message: 'Something went wrong' });
-        }
-      })
-
-      // transporter.sendMail({
-      //   from: '"Bravocado! 🥑" <bravocado@ironhackers.dev>',
-      //   to: email,
-      //   subject: 'Awesome Subject',
-      //   text: 'Awesome Message',
-      //   html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
-      // })
-      //   .then(info => {
-      //     res.redirect('/')
-      //   })
-      //   .catch(error => console.log(error))
-      res.redirect('/');
+      newUser.save()
+        .then(() => {
+          // transporter.sendMail({
+          //   from: '"Bravocado! 🥑" <bravocado@ironhackers.dev>',
+          //   to: email,
+          //   subject: 'Awesome Subject',
+          //   text: 'Awesome Message',
+          //   html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
+          // })
+          //   .then(info => {
+          //     res.redirect('/')
+          //   })
+          //   .catch(error => console.log(error))
+          res.redirect('/');
+        })
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err));
 })
