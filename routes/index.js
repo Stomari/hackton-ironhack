@@ -68,8 +68,8 @@ router.post('/send-email', (req, res) => {
             to: email,
             subject: 'Awesome Subject',
             text: 'Awesome Message',
-            html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
-            // html: `<b>${username} <a href="http://bravocado.ironhackers.tech/promo/${token}">Click on this link to confirm</a></b>`
+            // html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
+            html: `<b>${username} <a href="http://bravocado.ironhackers.tech/promo/${token}">Click on this link to confirm</a></b>`
           })
             .then(info => {
               UserStatistics.find()
