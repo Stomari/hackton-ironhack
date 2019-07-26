@@ -1,11 +1,133 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+{{!-- <h1>{{title}}</h1> --}}
+{{!-- <p>Welcome to {{title}}</p> --}}
 
-<form action="/send-email" method="post">
-  <label for="email">Email</label>
-    <input type="email" name="email" id="email">
-  <label for="username">Full Name</label>
-    <input type="text" name="username" id="username">
-  <button type="submit">Submit</button>
+
+<div id="header-bg"></div>
+<header>
+  <h1 id="page-title">Bravocado</h1>
+  <h3 id="header-h3">Avocado is not an enemy - It’s a Superfood! That’s why we want you to try out our Bravocado and be
+    as healthy as
+    you can. <span class="albus-span span-bg">‘Cause you can!</span></h3>
+  <div id="header-figure">
+    <img src="./images/Bravocado Character@2x.png" id="big-bravocado" alt="Big and strong Bravocado">
+  </div>
+  <ul class="steps-container">
+    <li class="step">
+      <div class="steps-num">1</div>
+      <p class="steps-desc">Tell us your e-mail so we can send your coupon;</p>
+    </li>
+    <li class="step">
+      <div class="steps-num">2</div>
+      <p class="steps-desc">Access your e-mail to redeem your coupon</p>
+    </li>
+    <li class="step">
+      <div class="steps-num">3</div>
+      <p class="steps-desc">Find the nearest store of you and <span class="albus-span">Bravocado!</span></p>
+    </li>
+  </ul>
+</header>
+
+
+<form action="/send-email" method="POST" id="subscript-form">
+  <div id="form-content">
+    <h2>Get your your first Bravocado for free!</h2>
+    <label for="username">How would you like to be called?</label>
+    <input type="text" name="username" id="username" placeholder="Name" required>
+    <input type="email" name="email" id="email" placeholder="name@example.com" required>
+    <button type="submit" id="submit-btn">Submit</button>
+    <div class="social-icons">
+      <figure>
+        <a href="http://facebook.com/#"><img class="social-img" src="./images/facebook.svg" alt="Facebook logo"></a>
+      </figure>
+      <figure>
+        <a href="http://instagram.com/#"><img class="social-img" src="./images/instagram-2.svg"
+            alt="Instagram logo"></a>
+      </figure>
+      <figure>
+        <a href="http://twitter.com/#"><img class="social-img" src="./images/twitter-logo-silhouette.svg"
+            alt="Facebook logo"></a>
+      </figure>
+    </div>
+    <p id="spam-message">Don’t worry! We’re not gonna spam you. </p>
+  </div>
 </form>
+
+<main>
+  <section class="page-section">
+    <h2 class="section-title">Meet and greet</h2>
+    <div id="gallery">
+      <figure class="meet-figure">
+        <img src="./images/2b0082170d41bd163a061c00f9ee1341.jpg" alt="Person's hand holding an open avocado"
+          class="meet-img">
+      </figure>
+      <figure class="meet-figure">
+        <img src="./images/2e41d6fb56fcc4638fd37391b7e6110e.jpg" alt="Three avocados in a bowl" class="meet-img">
+      </figure>
+      <figure class="meet-figure">
+        <img src="./images/3e91707aa9864e567b1e9e85beab80b9.jpg" alt="Lots of avocados" class="meet-img">
+      </figure>
+      <figure class="meet-figure">
+        <img src="./images/4707aa12940ea70253b800b504c09f54.jpg" alt="Person's hand holding an open avocado"
+          class="meet-img">
+      </figure>
+      <figure class="meet-figure">
+        <img src="./images/acd2a69e1a74671db1555c62203a91b7.jpg" alt="Person's hand holding an open avocado"
+          class="meet-img">
+      </figure>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2 class="section-title">Benefits</h2>
+    <div id="benefits-container">
+      <article class="benefit">
+        <img src="./images/gordin@2x.png" alt="Bravocado thin" class="benefit-img">
+        <p class="benefit-desc">helps you lose weight</p>
+      </article>
+      <article class="benefit">
+        <img src="./images/Benefit2TRISTE2x.png" alt="Bravocado working out" class="benefit-img">
+        <p class="benefit-desc">improves workout performance</p>
+      </article>
+      <article class="benefit">
+        <img src="./images/peso exercicios@2x.png" alt="Bravocado in pain" class="benefit-img">
+        <p class="benefit-desc">decreases post workout pain</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2 class="section-title">Find the nearest store from you</h2>
+    <p class="map-text">Check all of our addresses to choose where to get your <span
+        class="albus-span">Bravocado.</span></p>
+    <div class="map-sec">
+      <div id="map"></div>
+      <div id="places-pick-container">
+        <select name="places-pick" id="places-pick">
+          <option disabled selected>Choose a store</option>
+          <option value="0">Place 01</option>
+          <option value="1">Place 02</option>
+          <option value="2">Place 03</option>
+          <option value="3">Place 04</option>
+          <option value="4">Place 05</option>
+          <option value="5">Place 06</option>
+          <option value="6">Place 07</option>
+          <option value="7">Place 08</option>
+          <option value="8">Place 09</option>
+          <option value="9">Place 11</option>
+          <option value="10">Place 11</option>
+          <option value="11">Place 12</option>
+          <option value="12">Place 13</option>
+          <option value="13">Place 14</option>
+          <option value="14">Place 15</option>
+        </select>
+      </div>
+    </div>
+  </section>
+</main>
+
 {{message}}
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCNveOYYDWSHcUG4jhYiKAEQh0y4l6vtI"></script>
+<script src="/javascripts/maps.js"></script>
+
+
