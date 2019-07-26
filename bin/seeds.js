@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const UserStatistics = require('../models/userStatistics');
 const Admin = require('../models/admin');
 
-mongoose.connect('mongodb://heroku_mwbpkdzx:5rdvv0q07vtih0o7oid9ujfsjj@ds255577.mlab.com:55577/heroku_mwbpkdzx');
+// mongoose.connect('mongodb://heroku_mwbpkdzx:5rdvv0q07vtih0o7oid9ujfsjj@ds255577.mlab.com:55577/heroku_mwbpkdzx');
+mongoose.connect('mongodb://localhost/hackton-ironhack');
 
 const statistics =
 {
