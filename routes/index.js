@@ -11,18 +11,7 @@ const transporter = nodemailer.createTransport(sparkPostTransport({
 }));
 
 router.get('/', (req, res) => {
-  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let token = 'AVOCADO';
-  for (let i = 0; i < 15; i += 1) {
-    token += characters[Math.floor(Math.random() * characters.length)];
-  }
-  QRCode.toDataURL(token, { version: 10 })
-    .then(url => {
-      res.render('index', { url });
-    })
-    .catch(err => {
-      console.error(err)
-    })
+  res.render('index');
 });
 
 router.post('/send-email', (req, res) => {
@@ -57,19 +46,20 @@ router.post('/send-email', (req, res) => {
         if (err) {
           res.render('index', { message: 'Something went wrong' });
         }
-      });
-
-      transporter.sendMail({
-        from: '"Bravocado! 🥑" <bravocado@ironhackers.dev>',
-        to: email,
-        subject: 'Awesome Subject',
-        text: 'Awesome Message',
-        html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
       })
-        .then(info => {
-          res.redirect('/')
-        })
-        .catch(error => console.log(error))
+
+      // transporter.sendMail({
+      //   from: '"Bravocado! 🥑" <bravocado@ironhackers.dev>',
+      //   to: email,
+      //   subject: 'Awesome Subject',
+      //   text: 'Awesome Message',
+      //   html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
+      // })
+      //   .then(info => {
+      //     res.redirect('/')
+      //   })
+      //   .catch(error => console.log(error))
+      res.redirect('/');
     })
     .catch(err => console.log(err));
 })
