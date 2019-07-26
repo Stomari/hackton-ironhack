@@ -2,16 +2,35 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const sparkPostTransport = require('nodemailer-sparkpost-transport');
-const QRCode = require('qrcode');
-const User = require('../models/user')
+const User = require('../models/user');
+const UserStatistics = require('../models/userStatistics');
 
 
-const transporter = nodemailer.createTransport(sparkPostTransport({
-  'sparkPostApiKey': process.env.SPARKPOST_API_KEY
-}));
+// const transporter = nodemailer.createTransport(sparkPostTransport({
+//   'sparkPostApiKey': process.env.SPARKPOST_API_KEY
+// }));
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.mailtrap.io',
+  port: 2525,
+  auth: {
+    user: 'e86143af192ef8',
+    pass: '5c8ee907365d35',
+  },
+});
 
 router.get('/', (req, res) => {
-  res.render('index');
+  UserStatistics.find()
+    .then((data) => {
+      let { access } = data[0];
+      access += 1;
+      UserStatistics.findOneAndUpdate({ _id: data[0]._id }, { access })
+        .then(() => {
+          res.render('index');
+        })
+        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
 });
 
 router.post('/send-email', (req, res) => {
@@ -23,8 +42,8 @@ router.post('/send-email', (req, res) => {
   }
 
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let token = 'AVOCADO';
-  for (let i = 0; i < 15; i += 1) {
+  let token = 'AVO';
+  for (let i = 0; i < 4; i += 1) {
     token += characters[Math.floor(Math.random() * characters.length)];
   }
 
@@ -44,18 +63,29 @@ router.post('/send-email', (req, res) => {
 
       newUser.save()
         .then(() => {
-          // transporter.sendMail({
-          //   from: '"Bravocado! 🥑" <bravocado@ironhackers.dev>',
-          //   to: email,
-          //   subject: 'Awesome Subject',
-          //   text: 'Awesome Message',
-          //   html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
-          // })
-          //   .then(info => {
-          //     res.redirect('/')
-          //   })
-          //   .catch(error => console.log(error))
-          res.redirect('/');
+          transporter.sendMail({
+            from: '"Bravocado! 🥑" <bravocado@ironhackers.dev>',
+            to: email,
+            subject: 'Awesome Subject',
+            text: 'Awesome Message',
+            html: `<b>${username} <a href="http://localhost:3000/promo/${token}">Click on this link to confirm</a></b>`
+          })
+            .then(info => {
+              // res.redirect('/')
+              UserStatistics.find()
+                .then((data) => {
+                  let { form, access } = data[0];
+                  form += 1;
+                  access -= 1;
+                  UserStatistics.findOneAndUpdate({ _id: data[0]._id }, { access, form })
+                    .then(() => {
+                      res.redirect('/');
+                    })
+                    .catch(err => console.log(err));
+                })
+                .catch(err => console.log(err));
+            })
+            .catch(error => console.log(error))
         })
         .catch(err => console.log(err))
     })
