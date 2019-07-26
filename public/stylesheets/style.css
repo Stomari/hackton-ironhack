@@ -256,4 +256,23 @@ input {
   margin-top: 50px;
   margin-left: 600px; }
 
+.qr {
+  width: 150px;
+  z-index: 1;
+  position: absolute;
+  top: 130px;
+  left: 580px; }
+
+.cupom {
+  width: 800px;
+  position: absolute; }
+
+.code-promo {
+  z-index: 1;
+  top: 250px;
+  font-size: 30px;
+  left: 130px;
+  font-family: 'Albus';
+  position: absolute; }
+
 /*# sourceMappingURL=style.css.map */
