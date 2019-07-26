@@ -52,7 +52,8 @@ app.locals.title = 'Bravocado!';
 
 
 const index = require('./routes/index');
+const redeemPage = require('./routes/promo.js');
 app.use('/', index);
-
+app.use('/', redeemPage);
 
 module.exports = app;

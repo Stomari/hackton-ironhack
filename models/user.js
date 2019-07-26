@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: { type: String, require: true },
   email: { type: String, require: true },
+  promoCode: { type: String, require: true },
+  validation: { type: Boolean, default: false },
 }, {
   timestamps: true,
 });
